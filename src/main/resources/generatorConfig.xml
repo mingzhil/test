@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--指定数据库驱动jar包位置-->
+    <!--id:自定义-->
+    <context id="mybatisConfig" targetRuntime="MyBatis3">
+        <!--禁用注释-->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+        <!--连接数据库,useSSL=false解决jdbd与mysql版本兼容问题-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql:///springboot?useSSL=false"
+                        userId="root" password=""/>
+        <!--生成entity类-->
+        <javaModelGenerator targetPackage="com.lzm.demo.entity" targetProject="src/main/java"/>
+        <!--xml映射文件-->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+        <!--mapper接口-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.lzm.demo.mapper" targetProject="src/main/java"/>
+        <!--table配置,指定数据库中t_user表生成对应的User实体类-->
+        <table tableName="user" domainObjectName="User"/>
+    </context>
+</generatorConfiguration>
